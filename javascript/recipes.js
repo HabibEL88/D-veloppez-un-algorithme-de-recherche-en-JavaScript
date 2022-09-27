@@ -1,4 +1,4 @@
-export const recipes = [
+const recipes = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -20,7 +20,7 @@ export const recipes = [
             },
             {
                 "ingredient" : "Sucre",
-                "quantity" : 30,
+                "quantite" : 30,
                 "unit" : "grammes"
             },
             {
