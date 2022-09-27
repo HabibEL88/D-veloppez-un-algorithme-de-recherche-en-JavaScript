@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { recipes } from "./data/recipes";
-import './styles/style.css';
-import { Header } from "./components/Header";
 
+import { recipes } from "./recipes";
+import './style.css';
+import { Header } from "./components/Header";
 
 // TODO: structurer la codebase (dossiers, fichiers, composants, etc.)
 const Recipe = ({ recipe }) => (
@@ -14,10 +14,6 @@ const Recipe = ({ recipe }) => (
 
 const App = () => {
   const [myRecipes, setMyRecipes] = useState([]);
-  const research = (query) => {
-    // Code
-    console.debug(query);
-  }
   useEffect(() => {
     setTimeout(() => {
         setMyRecipes(recipes);
@@ -31,8 +27,7 @@ const App = () => {
         <section>
             <form action="#" method="get" class="form">
                 <div class="searchbar">
-                    <input type="text" name="search" id="search" placeholder="Rechercher une recette" 
-                    onChange={(e) => research(e.target.value)}/>
+                    <input type="text" name="search" id="search" placeholder="Rechercher une recette" />
                     <button type="submit" class="searchbar-button"><i class="fas fa-2x fa-search"></i></button>
                 </div>
                 <div class="search-list"> 
