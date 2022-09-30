@@ -1,4 +1,4 @@
-const recipes = [
+export const recipes = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -20,7 +20,7 @@ const recipes = [
             },
             {
                 "ingredient" : "Sucre",
-                "quantite" : 30,
+                "quantity" : 30,
                 "unit" : "grammes"
             },
             {
@@ -1724,3 +1724,10 @@ const recipes = [
         "ustensils":["rouleau à patisserie","fouet"]
     }
 ]
+/*console.debug(`Loaded ${recipes.length} recipes.`)
+
+const lotsOfRecipes = [];
+for (i = 0; i < 10 ; i++) {
+    recipes.forEach((recipe) => lotsOfRecipes.push(recipe));
+} 
+console.debug(`Loaded ${lotsOfRecipes.length} recipes in lotsOfRecipes.`)*/
