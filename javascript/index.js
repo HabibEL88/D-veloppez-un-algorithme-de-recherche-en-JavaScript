@@ -1,4 +1,5 @@
 import { recipes } from "./recipes.js";
+import {sortByIngredients} from './tag.js'
 
 // Retournement du chevron des cards au clic
 const chevron = document.querySelectorAll(".fa-chevron-down");
@@ -25,6 +26,7 @@ let recipeHTMLString = ""; // Contenu de la liste des recettes
 let errorResult = document.getElementById("error-result");
 let lastResearchQuery = "";
 let lastTags = [];
+let recipeDisplayed = [];
 
 // FONCTIONS 
 getRecipes(recipes); // Affichage de toutes les recettes sur la page au chargement
@@ -58,6 +60,8 @@ function getRecipes(recipesToDisplay) {
     recipeHTMLString += element.html; // Insère l'HTML de la recette dans recipeHTMLString
   });
   recipesContainer.innerHTML = recipeHTMLString; // l'HTML de toutes les recettes figure dans recipesContainer
+  recipeDisplayed = recipesToDisplay
+  sortByIngredients(recipeDisplayed)
 }
 
 
@@ -66,7 +70,7 @@ function ingredientConstructor(item) {
     return `${item.ingredient}`;
   }
   
-  // Affichage des ingrédie-nts dans la card recette
+  // Affichage des ingrédients dans la card recette
   function getIngredients(item) {
     return `<span class="ingredient">${item.ingredient}</span>: ${item.quantity || ""} ${item.unit || ""} <br>`;
   }
@@ -132,3 +136,4 @@ searchInput.addEventListener("input", (e) => {
   // testInput(e);
   searchRecipe(e);
 });
+

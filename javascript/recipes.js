@@ -9,12 +9,12 @@ export const recipes = [
                 "quantity" : 400,
                 "unit" : "ml"
             },
-            {
+          
+               {
                 "ingredient" : "Jus de citron",
                 "quantity" : 2
             },
-            {
-                "ingredient" : "Crème de coco",
+            {   "ingredient" : "Crème de coco",
                 "quantity" : 2,
                 "unit" : "cuillères à soupe"
             },
