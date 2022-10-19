@@ -1,77 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <!-- Meta -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Votre site de recettes de cuisine">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Votre site de recettes de cuisine" />
 
     <!-- Titre de la page -->
     <title>Les petits plats</title>
 
     <!-- Links -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <header>
-        <img src="assets/logo.png" alt="Logo Les petits plats">
+      <img src="assets/logo.png" alt="Logo Les petits plats" />
     </header>
 
     <!-- Formulaire de recherche -->
     <section>
-        <form action="#" method="get" class="form">
-            <div class="searchbar">
-                <input type="text" name="search" id="search" placeholder="Rechercher une recette">
-                <button type="submit" class="searchbar-button"><i class="fas fa-2x fa-search"></i></button>
-            </div>
-            <div class="search-list">
-                <div id="filters">
-
-                </div>
-
-                <!-- Cards de recherche -->
-                <div class="cards">
-                        <!-- Ingrédients -->
-                    <div class="search-card">
-                        <div class="search-input">
-                            <input type="text" name="ingredients" id="ingredients" placeholder="Ingredients">
-                            <button class="search-card-button"><i class="fas fa-chevron-down" id="ingredients-chevron"></i></button>
-                        </div>
-                        <div id="ingredients-container" class="list-container">
-                            <ul id="ingredients-ul"></ul>
-                        </div>
-                    </div>
-                    <!-- Appareils -->
-                    <div class="search-card">
-                        <div class="search-input">
-                            <input type="text" name="appareil" id="appareil" placeholder="Appareils">
-                            <button class="search-card-button"><i class="fas fa-chevron-down" id="appliances-chevron"></i></button>
-                        </div>
-                        
-                    
-                        <div id="appliances-container" class="list-container">
-                            <ul id="appliances-ul"></ul>
-                        </div>
-                    </div>
-                    <!-- Ustensiles -->
-                    <div class="search-card">
-                        <div class="search-input">
-                        <input type="text" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
-                        <button class="search-card-button"><i class="fas fa-chevron-down" id="ustensils-chevron"></i></button>
-                        </div>
-                    
-                    <div id="ustensils-container" class="list-container">
-                        <ul id="ustensils-ul"></ul>
-                    </div>
-                </div>
-            </div>
+      <form action="#" method="get" class="form">
+        <div class="searchbar">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Rechercher une recette"
+          />
+          <button type="submit" class="searchbar-button">
+            <i class="fas fa-2x fa-search"></i>
+          </button>
         </div>
-        </form>        
+        <div class="search-list">
+          <div id="filters"></div>
+
+          <!-- Cards de recherche -->
+          <div class="cards">
+            <!-- Ingrédients -->
+            <div class="search-card">
+              <div class="search-input">
+                <input
+                  type="text"
+                  name="ingredients"
+                  id="ingredients"
+                  placeholder="Ingredients"
+                />
+                <button type="button" class="search-card-button">
+                  <i class="fas fa-chevron-down" id="ingredients-chevron"></i>
+                </button>
+              </div>
+              <div id="ingredients-container" class="list-container">
+                <ul id="ingredients-ul"></ul>
+              </div>
+            </div>
+            <!-- Appareils -->
+            <div class="search-card">
+              <div class="search-input">
+                <input
+                  type="text"
+                  name="appareil"
+                  id="appareil"
+                  placeholder="Appareils"
+                />
+                <button type="button" class="search-card-button">
+                  <i class="fas fa-chevron-down" id="appliances-chevron"></i>
+                </button>
+              </div>
+
+              <div id="appliances-container" class="list-container">
+                <ul id="appliances-ul"></ul>
+              </div>
+            </div>
+            <!-- Ustensiles -->
+            <div class="search-card">
+              <div class="search-input">
+                <input
+                  type="text"
+                  name="ustensiles"
+                  id="ustensiles"
+                  placeholder="Ustensiles"
+                />
+                <button type="button" class="search-card-button">
+                  <i class="fas fa-chevron-down" id="ustensils-chevron"></i>
+                </button>
+              </div>
+
+              <div id="ustensils-container" class="list-container">
+                <ul id="ustensils-ul"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </section>
 
     <!-- Recettes -->
@@ -79,6 +112,5 @@
     <div id="error-result"></div>
     <!-- JavaScript -->
     <script src="javascript/index.js" type="module"></script>
-    <script src="javascript/box.js"></script>
-</body>
+  </body>
 </html>
