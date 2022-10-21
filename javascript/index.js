@@ -24,7 +24,6 @@ const searchInput = document.getElementById("search");
 let recipeArray = []; // Tableau contenant toutes les recettes
 let recipeHTMLString = ""; // Contenu de la liste des recettes
 let errorResult = document.getElementById("error-result");
-let lastResearchQuery = "";
 let lastTags = [];
 let recipeDisplayed = [];
 
@@ -84,17 +83,14 @@ function getIngredients(item) {
   } ${item.unit || ""} <br>`;
 }
 
-function search() {
+export function search(query) {
+  console.debug("searching");
   let newArray = recipes;
   let sortArray = [];
   for (let i = 0; i < newArray.length; i++) {
     if (
-      newArray[i].name
-        .toLowerCase()
-        .includes(lastResearchQuery.toLowerCase()) ||
-      newArray[i].description
-        .toLowerCase()
-        .includes(lastResearchQuery.toLowerCase())
+      newArray[i].name.toLowerCase().includes(query.toLowerCase()) ||
+      newArray[i].description.toLowerCase().includes(query.toLowerCase())
     ) {
       sortArray.push(newArray[i]);
     } else {
@@ -102,7 +98,7 @@ function search() {
         if (
           newArray[i].ingredients[j].ingredient
             .toLowerCase()
-            .includes(lastResearchQuery.toLowerCase())
+            .includes(query.toLowerCase())
         ) {
           sortArray.push(newArray[i]);
           break;
@@ -125,14 +121,11 @@ function search() {
 
 // Fonction appelée à la saisie de plus ou égal à 3 caractères dans la barre de recherche principale.
 // Si le nouveau tableau est égal à 0, alors un message d'erreur s'affiche, s'il ne se passe rien, le tableau ne change pas
-function addTag(tag) {
-  // ...
-}
+
 function searchRecipe(e) {
   if (searchInput.value.length >= 3) {
     recipesContainer.innerHTML = "";
-    lastResearchQuery = searchInput.value.toLowerCase();
-    search();
+    search(searchInput.value.toLowerCase());
   }
 }
 // Bind the elements of the interface that react to a User event
