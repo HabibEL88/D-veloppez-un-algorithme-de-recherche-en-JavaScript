@@ -1,36 +1,53 @@
 import { recipes } from "./recipes.js";
-import { search } from "./index.js";
+import { search, getRecipes } from "./index.js";
 
 let ingredientList = [];
 let ustensilsList = [];
 let applianceList = [];
-
-let tagsList = [];
+let selectedIngredients = [];
+let selectedUstensils = [];
+let selectedAppliances = [];
 
 export function sortByIngredients(recipeDisplayed) {
   let ingredients = [];
 
   for (const property of recipeDisplayed) {
     for (const prop of property.ingredients) {
-      if (!ingredients.includes(prop.ingredient)) {
+      if (!ingredients.includes(prop.ingredient.toLowerCase())) {
         /*evite doublon includes*/
-        ingredients.push(prop.ingredient);
+        ingredients.push(prop.ingredient.toLowerCase());
       }
     }
   }
-  return (ingredientList = ingredients);
+  ingredientList = ingredients;
 }
 
 export function sortByAppliances(recipeDisplayed) {
   let appliances = [];
 
   for (const property of recipeDisplayed) {
-    if (!appliances.includes(property.appliance)) {
+    if (!appliances.includes(property.appliance.toLowerCase())) {
       /*evite doublon includes*/
-      appliances.push(property.appliance);
+      appliances.push(property.appliance.toLowerCase());
     }
   }
-  return (applianceList = appliances);
+  applianceList = appliances;
+}
+
+export function sortByustensils(recipeDisplayed) {
+  let ustensils = [];
+
+  for (const property of recipeDisplayed) {
+    for (const prop of property.ustensils) {
+      if (!ustensils.includes(prop.toLowerCase())) {
+        /*evite doublon includes*/
+        console.log(prop);
+        ustensils.push(prop.toLowerCase());
+      }
+    }
+  }
+  console.log(ustensils);
+  ustensilsList = ustensils;
 }
 
 const chevron = document.querySelectorAll(".fa-chevron-down"); // Chevrons des boutons
@@ -46,6 +63,7 @@ const selectedTags = document.getElementById("selectedTags");
 
 chevron[0].addEventListener("click", showIngredientsList); // Affichage des ingrédients au clic sur le bouton
 chevron[1].addEventListener("click", showApplianceList); // Affichage des Appareils au clic sur le bouton
+chevron[2].addEventListener("click", showUstensilList);
 
 /* chevron[0].addEventListener("click", showIngredientsList); // Affichage des ingrédients au clic sur le bouton
  */ // Ouverture de la searchCard
@@ -60,7 +78,7 @@ function showIngredientsList() {
     ingredientsInput.placeholder = `Rechercher un ingrédient`;
   }
   openCard(searchCard[0]);
-  addTags(ingredientsUl, ingredientList);
+  addTags(ingredientsUl, ingredientList, selectedIngredients);
 }
 
 function showApplianceList() {
@@ -70,38 +88,50 @@ function showApplianceList() {
     applianceInput.placeholder = `Rechercher un Appareil`;
   }
   openCard(searchCard[1]);
-  addTags(applianceUl, applianceList);
+  addTags(applianceUl, applianceList, selectedAppliances);
 }
 
-function clickOnTag(e) {
+function showUstensilList() {
+  if (searchCard[2].classList.contains("active")) {
+    ustensilsInput.placeholder = `Ustensiles`;
+  } else {
+    ustensilsInput.placeholder = `Rechercher un Ustensil`;
+  }
+  openCard(searchCard[2]);
+  addTags(ustensilsUl, ustensilsList, selectedUstensils);
+}
+
+function clickOnTag(e, selectedTagList) {
   let li = e.target;
   let selectedTag = document.createElement("li");
   selectedTag.textContent = li.textContent;
-  tagsList.push(li.textContent);
-  console.log(tagsList);
+  selectedTagList.push(li.textContent);
   selectedTags.appendChild(selectedTag);
   searchTag();
 }
 
-function addTags(elementDOM, tableau) {
+function addTags(elementDOM, tableau, selectedTagList) {
   elementDOM.innerHTML = "";
   for (let i = 0; i < tableau.length; i++) {
     let li = document.createElement("li");
     li.textContent = tableau[i];
-    li.addEventListener("click", clickOnTag);
+    li.addEventListener("click", (e) => clickOnTag(e, selectedTagList));
     elementDOM.appendChild(li);
   }
 }
 
 function searchTag() {
-  recipes.forEach((element) => {
-    if (tagsList.every((i) => element.appliance.includes(i))) console.log("ok");
-    console.log(typeof element.ingredients);
-    if (tagsList.every((i) => element.ingredients.includes(i)))
-      console.log("ok");
-    element.ingredients.forEach((el) => {
-      if (tagsList.every((i) => el.ingredient.includes(i)))
-        console.log(element);
-    });
+  let filteredRecipes = recipes.filter((element) => {
+    let recipeIngredients = element.ingredients.map((ing) =>
+      ing.ingredient.toLowerCase()
+    );
+    let recipeUstensils = element.ustensils.map((ing) => ing.toLowerCase());
+    return (
+      selectedAppliances.every((i) => element.appliance.toLowerCase() == i) &&
+      selectedIngredients.every((i) => recipeIngredients.includes(i)) &&
+      selectedUstensils.every((i) => recipeUstensils.includes(i))
+    );
   });
+  getRecipes(filteredRecipes);
+  console.log(filteredRecipes);
 }

@@ -1,5 +1,5 @@
 import { recipes } from "./recipes.js";
-import { sortByIngredients, sortByAppliances } from "./tag.js";
+import { sortByIngredients, sortByAppliances, sortByustensils } from "./tag.js";
 
 // Retournement du chevron des cards au clic
 const chevron = document.querySelectorAll(".fa-chevron-down");
@@ -31,7 +31,7 @@ let recipeDisplayed = [];
 getRecipes(recipes); // Affichage de toutes les recettes sur la page au chargement
 
 //Affichage des recettes sur la page
-function getRecipes(recipesToDisplay) {
+export function getRecipes(recipesToDisplay) {
   recipeArray = recipesToDisplay.map((recipe) => {
     // Remplit recipeArray avec toutes les données nécessaires
     return {
@@ -69,6 +69,7 @@ function getRecipes(recipesToDisplay) {
   recipeDisplayed = recipesToDisplay;
   sortByIngredients(recipeDisplayed);
   sortByAppliances(recipeDisplayed);
+  sortByustensils(recipeDisplayed);
 }
 
 // Affichage chaque ingrédient dans recipe.ingredient
