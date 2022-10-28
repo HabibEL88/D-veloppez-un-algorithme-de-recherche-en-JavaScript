@@ -56,8 +56,23 @@ header img {
     padding-right: 17px;
     margin-bottom: 25px;
 }
-
-
+.flextag{
+    display: flex;
+}
+.selectedTags{
+    padding: 10px 20px;
+    width: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+    color: #FFF;
+    margin-bottom: 15px;
+    gap:10px;
+    display:flex;
+    align-items: center;
+}
+.close-button{
+    cursor: pointer;
+}
 
 /* Container des cards de recherche par ingrédients, appareils, ustensiles */
 .cards {
