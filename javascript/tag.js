@@ -76,9 +76,10 @@ function showIngredientsList() {
     ingredientsInput.placeholder = `Rechercher un ingrédient`;
   }
   openCard(searchCard[0]);
-  addTags(
-    ingredientsUl,
+  inputTag(
+    ingredientsInput,
     ingredientList,
+    ingredientsUl,
     selectedIngredients,
     "ingredients-filter"
   );
@@ -91,7 +92,13 @@ function showApplianceList() {
     applianceInput.placeholder = `Rechercher un Appareil`;
   }
   openCard(searchCard[1]);
-  addTags(applianceUl, applianceList, selectedAppliances, "appliances-filter");
+  inputTag(
+    applianceInput,
+    applianceList,
+    applianceUl,
+    selectedAppliances,
+    "appliances-filter"
+  );
 }
 
 function showUstensilList() {
@@ -101,7 +108,13 @@ function showUstensilList() {
     ustensilsInput.placeholder = `Rechercher un Ustensil`;
   }
   openCard(searchCard[2]);
-  addTags(ustensilsUl, ustensilsList, selectedUstensils, "ustensils-filter");
+  inputTag(
+    ustensilsInput,
+    ustensilsList,
+    ustensilsUl,
+    selectedUstensils,
+    "ustensils-filter"
+  );
 }
 
 function clickOnTag(e, selectedTagList, prop) {
@@ -154,4 +167,50 @@ function searchTag() {
     );
   });
   getRecipes(filteredRecipes);
+}
+
+ingredientsInput.addEventListener("click", showIngredientsList);
+applianceInput.addEventListener("click", showApplianceList);
+ustensilsInput.addEventListener("click", showUstensilList);
+
+ingredientsInput.addEventListener("keyup", (e) =>
+  inputTag(
+    e.target,
+    ingredientList,
+    ingredientsUl,
+    selectedIngredients,
+    "ingredients-filter"
+  )
+);
+applianceInput.addEventListener("keyup", (e) =>
+  inputTag(
+    e.target,
+    applianceList,
+    applianceUl,
+    selectedAppliances,
+    "appliances-filter"
+  )
+);
+ustensilsInput.addEventListener("keyup", (e) =>
+  inputTag(
+    e.target,
+    ustensilsList,
+    ustensilsUl,
+    selectedUstensils,
+    "ustensils-filter"
+  )
+);
+
+function inputTag(inputTags, array, uls, selectedTagList, prop) {
+  const input = inputTags.value;
+
+  const result = array.filter((item) => {
+    return item.includes(input.toLowerCase());
+  });
+
+  if (result.length) {
+    addTags(uls, result, selectedTagList, prop);
+  } else {
+    uls.innerHTML = "";
+  }
 }
