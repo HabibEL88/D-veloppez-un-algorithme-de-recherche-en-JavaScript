@@ -84,7 +84,33 @@ function getIngredients(item) {
   } ${item.unit || ""} <br>`;
 }
 
+// ALGO SEARCH 1
 export function search(query) {
+  let filteredRecipes = recipes.filter((element) => {
+    let recipeIngredients = element.ingredients.map((ing) =>
+      ing.ingredient.toLowerCase()
+    );
+    return (
+      element.name.toLowerCase().includes(query) ||
+      recipeIngredients.includes(query) ||
+      element.description.toLowerCase().includes(query)
+    );
+  });
+  // Modify UI
+  if (filteredRecipes.length == 0) {
+    // Display an error when there are no results
+    errorResult.innerHTML = `<p class="no-value">« Aucune recette ne correspond à votre critère… vous pouvez
+    chercher « tarte aux pommes », « poisson », etc.
+     </p>`;
+  } else {
+    errorResult.innerHTML = "";
+    // Display in the DOM, the filtered recipes
+    getRecipes(filteredRecipes);
+  }
+}
+/*
+// ALGO SEARCH 2
+export function searchTest(query) {
   console.debug("searching");
   let newArray = recipes;
   let sortArray = [];
@@ -119,7 +145,7 @@ export function search(query) {
     getRecipes(sortArray);
   }
 }
-
+*/
 // Fonction appelée à la saisie de plus ou égal à 3 caractères dans la barre de recherche principale.
 // Si le nouveau tableau est égal à 0, alors un message d'erreur s'affiche, s'il ne se passe rien, le tableau ne change pas
 
