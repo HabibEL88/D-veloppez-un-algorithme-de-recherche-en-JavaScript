@@ -153,7 +153,7 @@ function addTags(elementDOM, tableau, selectedTagList, prop) {
     elementDOM.appendChild(li);
   }
 }
-/*
+
 function searchTag() {
   let sortArray = [];
   let applianceBool = false;
@@ -213,7 +213,7 @@ function searchTag() {
 
   getRecipes(sortArray);
 }
-*/
+/*
 function searchTag() {
   let filteredRecipes = recipes.filter((element) => {
     let recipeIngredients = element.ingredients.map((ing) =>
@@ -229,6 +229,7 @@ function searchTag() {
   console.log(filteredRecipes);
   getRecipes(filteredRecipes);
 }
+*/
 
 ingredientsInput.addEventListener("click", showIngredientsList);
 applianceInput.addEventListener("click", showApplianceList);

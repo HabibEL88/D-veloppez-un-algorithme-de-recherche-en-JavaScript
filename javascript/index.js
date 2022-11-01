@@ -85,6 +85,7 @@ function getIngredients(item) {
 }
 
 // ALGO SEARCH 1
+/*
 export function search(query) {
   let filteredRecipes = recipes.filter((element) => {
     let recipeIngredients = element.ingredients.map((ing) =>
@@ -108,9 +109,9 @@ export function search(query) {
     getRecipes(filteredRecipes);
   }
 }
-/*
+/*/
 // ALGO SEARCH 2
-export function searchTest(query) {
+export function search(query) {
   console.debug("searching");
   let newArray = recipes;
   let sortArray = [];
@@ -145,7 +146,6 @@ export function searchTest(query) {
     getRecipes(sortArray);
   }
 }
-*/
 // Fonction appelée à la saisie de plus ou égal à 3 caractères dans la barre de recherche principale.
 // Si le nouveau tableau est égal à 0, alors un message d'erreur s'affiche, s'il ne se passe rien, le tableau ne change pas
 
