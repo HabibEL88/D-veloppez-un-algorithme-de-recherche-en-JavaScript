@@ -1,59 +1,38 @@
-# Découpage du projet
 
-## Cartes
 
-Afficher une carte (Card) de recette
+Scénario :
 
-[X] 1/ Développer le composant UI de la recette avec toutes les datas
+Je suis en freelance et je viens d’être missionnée par l’entreprise “Les petits plats” en tant que Développeuse Front-end pour une mission de 3 mois.
 
-[X] 2/ Afficher toutes les recette dans une grille HTML
+Après avoir édité des livres de cuisine pendant plusieurs années, l’entreprise a décidé de se lancer dans la réalisation de son propre site de recettes de cuisine.
 
-## Filtres
+Sandra, cheffe de projet, est en charge de la digitalisation de l'entreprise avec la création de ce site web.
 
-Afficher les différents filtres (rouge/bleu/vert)
+Comme les sites offrant des recettes de cuisine sont nombreux, l’équipe a pensé que l’un des éléments qui peuvent faire la différence sur le site est la fluidité du moteur de recherche. L’équipe Back-end n’étant pas encore formée, nous disposons uniquement d’un fichier JavaScript contenant un tableau JSON de 50 recettes.
 
-[x] Développer un composant "filtre" avec un affichage par défaut "toggle"
+J'ai à ma disposition :
 
-[x] Afficher les trois filtres, l'un à côté de l'autre, dans la page principale
+la description du cas d’utilisation de recherche qui me servira de référence pour tout le développement de la fonctionnalité
 
-\*\* // => Pouvoir cliquer sur le filtre, pour afficher la totalité des données
+la maquette de la page sur Figma
 
-\*\* // => Afficher toutes les valeurs possibles de ce filtre
+Ma première mission sera donc d’implémenter la fonctionnalité de recherche du champ de recherche principale.
 
-\*\* Afficher des filtres sélectionnés entre la barre de recherche et les filtres
+Je dois :
 
-\*\*\* Bonus => Pour un filtre fixe ("Coco"), afficher ce filtre dans l'interface, en respectant la maquette
+ - réaliser quelque chose de performant car les utilisateurs veulent une recherche rapide, presque instantanée !
 
-\*\*\* Afficher le filtre en fonction de son type (couleur)
+ - transmettre une fiche d’investigation de fonctionnalité avec un algorigramme expliquant les 2 implémentations (une version avec les boucles natives comme while ou for et une version en programmation fonctionnelle avec les méthodes de l'objet array comme foreach, filter, map ou bien reduce) pour pouvoir comparer leurs performances et choisir la meilleure
 
-\*\*\* Prendre en compte une variable pour afficher ou non ce filtre
-
-\*\*\* En cliquant sur une valeur possible du filtre, ajouter ce filtre aux filtres sélectionnés
-
-\*\* Ajouter un champs de recherche dans le filtre
-
-\*\* Filtrer les valeurs possibles du filtre dans l'interface, en fonction du texte rentré
-
-\*\* Factoriser pour s'assurer que je ne me répètre pas dans le code
-
-## Algorithmes de recherche
-
-\*\* 3/ Barre de recherche, qui répond à du texte rentré dedans => console.debug()
-
-\*\* 4/ En utilisant un premier algorithme de recherche, je cache ou j'affiche la recette si un texte donné ("Coco") est compris dans le titre, les ingrédients ou la description
-
-\*\* 5/ A chaque fois que je modifie le texte rentré dans la barre de recherche, je l'utilise pour filtrer mes recettes avec l'algo développé dans l'étape précédente
-
-\*\* Bonus => Pour mon premier algorithme, j'utilise jsbench ou un timer (Date) pour afficher le temps pris par l'algorithme de recherche
-
-```
-var timerStart = new Date().getTime()
-var timerStop = new Date().getTime()
-console.debug(`search Duration: $(timerStop-timerStart)ms`)
-```
-
-\*\* Pour ce même algorithme, je filtre sur une valeur fixe d'ingrédient, d'outils, ...
-
-\*\* Quand je sélectionne un filtre, je relance l'algorithme de recherche, en me basant sur la query et les filtres sélectionnés
-
-\*\* Je développe un 2e algorithme de recherche, en utilisant plutôt les fonctions sur Array (.map, .reduce, .filter, ...)
+Langages utilisés :
+ - HTML5
+ - CSS3
+ - JavaScript
+ 
+Compétences évaluées :
+ - Analyser un problème informatique
+ - Développer un algorithme pour résoudre un problème
+ 
+Informations :
+ - Utilisation du live server
+ - Pour changer de branch : git checkout master (algo fonctionnel) ou git checkout search2 (algo natif)
